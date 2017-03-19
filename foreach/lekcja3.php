@@ -10,4 +10,5 @@ $tbl[5] = 532;
 foreach($tbl as $cena)
 {
 	echo $cena. "euro". "<br>";
+	
 }
