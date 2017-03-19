@@ -1,16 +1,10 @@
 <?php
-/**
-* Created on 12 Mar 2017 12:03:32
-* error prefix
-* @author gromula
-*
-*/
 
-class 1.php
-{
-//-----------------------------------------------------------------
+$tbl = array();//Ta zamienna $tablice bedzie od teraz tablica
+$tbl[0] = 1;
+$tbl[1] = 2;
+$tbl[2] = 3;
+$tbl[3] = 4;
+$tbl[4] = 10;
 
-//-----------------------------------------------------------------
-}
-
-?>
+echo $tbl[2];
