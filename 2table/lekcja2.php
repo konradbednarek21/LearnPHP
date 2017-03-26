@@ -5,7 +5,7 @@ $tbl[0] = 1;
 $tbl[1] = 2;
 $tbl[2] = 3;
 $tbl[3] = 4;
-$tbl[4] = 10;
+return $tbl[rand(0,4)];
 
  //nazwa_tablicy[element] = wartosc;
 
