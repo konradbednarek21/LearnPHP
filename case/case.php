@@ -18,7 +18,7 @@ switch($iloscZnakowRandomString)
 		break;
 	
 	case SZESC_EL_RANDOM:
-		$string = getRandomStringByNumber(6);
+		$string = getRandomStringByNumber(10);
 		echo $string . " " . strlen($string);
 		break;
 		
@@ -36,22 +36,6 @@ function getMojaFunkcja()
 	$string = getRandomStringByNumber(3);
 	echo $string . " " . strlen($string);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function getRandomString()
 {
