@@ -1,15 +1,15 @@
 <?php
 
-function getMyName($imie,$nazwisko)
-{	
-	return $imie . ' ' . $nazwisko;
+/*
+ * Napisz funkcjê zwracaj¹c¹ losow¹ liczbê 0 - 100
+ *
+ */
+function getDowolnaLiczba() {
+	$losowaLiczba = rand ( 0, 100 );
+	$losowaLiczba = $losowaLiczba + 100;
+	return $losowaLiczba; ///////// "zawsze" na koñcy return//////////
 }
 
-echo getMyName("Konrad","Bednarek");
+$text = "Mój wiek to : " . getDowolnaLiczba ();
 
-echo "<br>";
-
-echo getMyName("Bartosz","Gromowski");
-
-
-
+echo $text;
