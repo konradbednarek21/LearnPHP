@@ -3,7 +3,7 @@ $liczba = 56;
 
 switch($liczba)
 {
-	case "10";
+	case "10":
 		echo "To liczba 10";
 		break;
 	

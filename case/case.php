@@ -1,10 +1,58 @@
 <?php
-/**
- * Created on 26 Mar 2017 10:21:15
- * error prefix
- * @author gromula
- *
- */
+// Napisz program który za pomoca wprowadzenia zmiennej $w = n - liczba naturalna
+// Zwróci dowlony ciag znaków o dlugosci 3;
+// Zwroci ciag znakow o d³ugosci 6;
+// w kazdym innym przypadku dowolny ciag znakow;
+
+
+
+const TRZY_EL_RANDOM = 3;
+const SZESC_EL_RANDOM = 6;
+
+
+$iloscZnakowRandomString = 3;
+switch($iloscZnakowRandomString)
+{
+	case TRZY_EL_RANDOM:
+		getMojaFunkcja();
+		break;
+	
+	case SZESC_EL_RANDOM:
+		$string = getRandomStringByNumber(6);
+		echo $string . " " . strlen($string);
+		break;
+		
+	default:
+		$string = getRandomString();
+		echo $string . " " . strlen($string);
+		break;
+}
+
+
+
+
+function getMojaFunkcja()
+{
+	$string = getRandomStringByNumber(3);
+	echo $string . " " . strlen($string);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getRandomString()
 {
 	$keychars = "abcdefghijklmnopqrstuvwxyz";
@@ -31,12 +79,6 @@ function getRandomStringByNumber($dlugosc)
 }
 
 
-// Napisz program który za pomoca wprowadzenia zmiennej $w = n - liczba naturalna
-// Zwróci dowlony ciag znaków o dlugosci 3;
-// Zwroci ciag znakow o d³ugosci 6;
-// w kazdym innym przypadku dowolny ciag znakow;
-
-$w = 3;
 
 
 
