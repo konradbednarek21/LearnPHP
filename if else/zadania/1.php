@@ -2,13 +2,13 @@
 
 $pierwszaLiczba = 8;
 
-$drugaLiczba = 6;
+$drugaLiczba = 11;
 
 echo $pierwszaLiczba. "<br>";
 
 echo $drugaLiczba. "<br>";
 
-if($pierwszaLiczba >> $drugaLiczba)
+if($pierwszaLiczba > $drugaLiczba)
 {
 	echo "Pierwsza liczba jest wiêksza";
 }
