@@ -2,8 +2,8 @@
 function getDowolnyElementTablicy() 
 {
 $tbl = array('PierwszyElm', 'DrugiElm', 'TrzeciElm', 'CzwartyElm'); 
-$DowolnyElementTablicy = rand(0, 4);
-return $DowolnyElementTablicy;
+$DowolnyEmementTablicy = rand(0, 3);
+return $tbl[$DowolnyEmementTablicy];
 }
 
 $DowolnyElm = "Który element tablicy " . getDowolnyElementTablicy();
