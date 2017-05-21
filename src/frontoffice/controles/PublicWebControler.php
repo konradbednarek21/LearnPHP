@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created on 7 mar 2015 11:12:22
- * error prefix OR:300
- * maxerror prefix OR:30006
- * @author Tomasz Gajewski
- * @package daiglob
- */
 namespace braga\wordgame\frontoffice\controles;
 
 use braga\tools\html\Controler;

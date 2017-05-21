@@ -36,14 +36,14 @@ class Layout extends HtmlComponent
 	// -------------------------------------------------------------------------
 	protected function getTitle()
 	{
-		$retval = "";
+		$retval = "FizWeb.pl";
 		$retval = Tags::a(Tags::span("", "id='Logo'"), "href='/'");
 		if(User::getCurrent() instanceof User)
 		{
 			$logout = Tags::span("", "class='glyphicon glyphicon-log-out'") . " Wyloguj";
 			$retval .= Tags::a(Tags::button($logout, "class='btn btn-lg btn-primmary zPrawej ButtonWG'"), "href='?action=LogOut'");
 
-			$userInfo = "Witaj: " . User::getCurrent()->getEmail();
+			$userInfo = "Witaj: " . User::getCurrent()->getUser();
 			$retval .= Tags::span($userInfo, "class='btn btn-lg btn-primmary zPrawej ButtonLogout' style='margin-right:20px;' id='placowka_span'");
 
 			$retval .= $this->getModuleButtons();
@@ -62,8 +62,8 @@ class Layout extends HtmlComponent
 	// -------------------------------------------------------------------------
 	protected function getModuleButtons()
 	{
-		$gameListButton = $this->getButton("Lista Gier", "button_game_list", "?action=GetGameRoomList");
-		$newRoomButton = $this->getButton("Utwórz pokój", "button_new_game", "?action=GetNewRoomForm");
+		$gameListButton = $this->getButton("Dodaj wpis", "button_game_list", "?action=GetGameRoomList");
+		$newRoomButton = $this->getButton("Dodaj kategorię", "button_new_game", "?action=GetNewRoomForm");
 // 		$statisticBut	ton = $this->getButton("Statystyki", "button_statistic", "?action=GetStatisticForm");
 		$retval = "";
 		$retval .= BootstrapTags::col($gameListButton, "col-xs-12 col-sm-6 col-md-6 col-lg-3");
