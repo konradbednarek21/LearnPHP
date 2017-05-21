@@ -43,7 +43,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`iduser`, `user`, `pass`, `email`, `points`, `count_add_word`, `count_fail_word`, `api`, `count_get_word_api`) VALUES
-(1, 'test', 'test', 'test@gmail.com', 0, 0, 0, 1, 0),
+(1, 'konrad', 'test', 'test@gmail.com', 0, 0, 0, 1, 0),
 (2, 'bartek', '1', 'gromulab@gmail.com', 0, 0, 0, 0, 0);
 
 --
