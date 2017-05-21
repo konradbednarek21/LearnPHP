@@ -1,0 +1,13 @@
+{
+    "user": "root",
+    "pass": "",
+    "schema": "test",
+    "connection-string": "mysql:host=localhost",
+    "author": "Tomasz Gajewski",
+    "output-folder": "src",
+    "dao.xml-folder": "Doc/dao",
+    "error-prefix": "test",
+    "db-driver": "mysql",
+    "project-name": "Test",
+    "namespace": "braga\\daogenerator\\"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="vendor/braga/db/src"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-file-iterator/src"/>
+	<buildpathentry excluding="tools/" kind="src" path="vendor/braga/tools/src"/>
+	<buildpathentry kind="src" path="vendor/phpunit/phpunit-mock-objects/PHPUnit"/>
+	<buildpathentry kind="src" path="vendor/composer"/>
+	<buildpathentry kind="src" path="src"/>
+	<buildpathentry kind="src" path="vendor/symfony/yaml"/>
+	<buildpathentry kind="con" path="org.eclipse.dltk.USER_LIBRARY/PEAR"/>
+	<buildpathentry kind="src" path="vendor/braga/tools/src/tools"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-code-coverage/PHP"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-timer/src"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-text-template/src"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-token-stream/PHP"/>
+	<buildpathentry kind="src" path="vendor/phpunit/phpunit/PHPUnit"/>
+</buildpath>
