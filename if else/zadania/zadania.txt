@@ -1,1 +1,0 @@
-Napisz program wczytujacy 2 liczby, sprawdz i wypisz liczbe wieksza.

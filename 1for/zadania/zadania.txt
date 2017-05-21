@@ -1,5 +1,0 @@
-1. Wyœwietl od 10 do 100;
-2. Wyœwietl od -6 do -8;
-3. Wyœwietl od 10 do 0; *
-4. Wyœwietl od 0 do 7 po czym druga pêtla od 7 do 0;
-
