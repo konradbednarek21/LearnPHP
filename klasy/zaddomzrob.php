@@ -35,4 +35,6 @@ class PrzesylkaFirmowa extends Przesylka
 
 $PrzeFirm = new PrzesylkaFirmowa;
 
-echo PrzeFirm;
+$PrzeFirm->nadaj();
+echo "<br>";
+$PrzeFirm->odbierz();

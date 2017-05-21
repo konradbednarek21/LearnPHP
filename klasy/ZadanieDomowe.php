@@ -1,10 +1,5 @@
 <?php
-/**
-* Created on 14 May 2017 11:11:46
-* error prefix
-* @author gromula
-*
-*/
+
 //Utwórz klase abstracyjna Przesylka o metodach nadaj(), odbierz(), edytuj() wszystkie metody musza byc odstepne w klasach dziedziczacych.
 //W wy¿ej wymienionych metodach zwróc komunikat "nadaje przesylke", "odbieram przesylke", "edytuje przesylke"
 //Utworz klase Przesylkafirmowa o metodach nadpisujaca metody nadaj(*1) i odbierz(*2)
