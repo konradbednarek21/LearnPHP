@@ -1,0 +1,97 @@
+README SimplePHPDAOGenerator 
+
+1) How Start
+Reverse engenereng :
+
+please edit file
+
+/ReverseEngenereing/doReverse.php
+
+set  DB_HOST, DB_SCHEMA, DB_USER, DB_PASS 
+
+set 
+$project->setProjectFolder("{right path for classes}");
+
+and just run 
+
+required classes are in 
+include/framework 
+
+plese copy to your project and include it 
+
+classes to access to dbserver (mysql or oracle for now) are in 
+ReverseEngenereing/mysql
+and 
+/ReverseEngenereing/oracle
+
+in your project you need 
+function AddAlert($string)
+{
+	// save/display message
+	//(in future probably save funciton will be throw Exception) and 
+	// and this function will not be needed 
+}
+
+and 
+
+define("PHP_DATE_FORMAT", "Y-m-d");
+define("PHP_TIME_FORMAT", "H:i:s");
+define("PHP_DATETIME_FORMAT", PHP_DATE_FORMAT . " " . PHP_TIME_FORMAT);
+
+
+
+
+2) Philosophy
+
+this software generate get, set function and if finds foregin key, get function for parent / childs objects. 
+this software does not aspire to replace human in write efficient sql  .
+
+generated are two group of clases ObjectDAO.php and Object.php 
+
+ObjectDAO.php files are overwrite on every generate proces so DO NOT MODIFY THEM
+
+Object.php file are generated only if not exists 
+this is the place for other specialized sql query ex. search function 
+
+Files are generated only if table have primary key 
+
+this software generate two other files:
+
+dao.xml to save links between names column and atributes in clases 
+
+this file is generated if no exist  and modify when exists 
+by this file you can change names of classes or atributes 
+
+automagic conversion are made 
+
+for table / class
+first_table  -> FirstTable
+
+for column / atrib
+first_column -> firstColumn 
+
+and objdao.php 
+with all includes class files
+3) Using 
+
+read record from table 
+$obj = Object::get($idObject);// idObject is a primary key value 
+
+update 
+$obj = Object::get($idObject);
+$obj->setValue("value");
+$obj->save();
+
+insert
+$obj = Object::get();
+$obj->setValue("value");
+$obj->save();
+
+delete
+$obj = Object::get($idObject);
+$obj->kill();
+
+
+4) Knows problems
+use namespace are not implemented (in near future will be )
+ 
