@@ -16,8 +16,8 @@ define("TITLE_WORD_GAME", "Strona poświecona Fizyce");
 define("PRODUCTION", true);
 
 /* DATABASE CONNECTION INFO */
-define("DB_CONNECTION_STRING", "mysql:host=localhost;dbname=wordgame");
-define("ORA_SCHEMA", 'wordgame');
+define("DB_CONNECTION_STRING", "mysql:host=localhost;dbname=fizwebofficial");
+define("ORA_SCHEMA", 'fizwebofficial');
 define("DB_USER", 'root');
 define("DB_PASS", '');
 define("DB_SCHEMA", ORA_SCHEMA);

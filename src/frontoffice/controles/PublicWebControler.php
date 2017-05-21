@@ -13,6 +13,7 @@ use braga\tools\html\Controler;
 use braga\tools\tools\PostChecker;
 use braga\wordgame\frontoffice\views\Layout;
 use braga\wordgame\frontoffice\forms\LoginForm;
+use braga\wordgame\frontoffice\utils\BootstrapTags;
 
 class PublicWebControler extends Controler
 {
