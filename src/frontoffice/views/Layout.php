@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created on 13 lip 2013 16:24:56
- * @author Tomasz Gajewski
- * @package frontoffice
- * error prefix
- */
 namespace braga\wordgame\frontoffice\views;
 
 use braga\tools\html\HtmlComponent;
@@ -36,7 +30,7 @@ class Layout extends HtmlComponent
 	// -------------------------------------------------------------------------
 	protected function getTitle()
 	{
-		$retval = "FizWeb.pl";
+		$logout = Tags::span("FizWeb.pl");
 		$retval = Tags::a(Tags::span("", "id='Logo'"), "href='/'");
 		if(User::getCurrent() instanceof User)
 		{
@@ -51,7 +45,7 @@ class Layout extends HtmlComponent
 		else
 		{
 			$logout = Tags::span("", "class='glyphicon glyphicon-log-out'") . " Zaloguj sie";
-			$retval .= Tags::a(Tags::button($logout, "class='btn btn-lg btn-primmary zPrawej ButtonWG'"), "href='?action=Login'");
+			$retval .= Tags::a(Tags::button($logout, "class='btn btn-lg btn-primmary zPrawej       ButtonWG'"), "href='?action=Login'");
 		}
 
 		$retval = BootstrapTags::container($retval);
