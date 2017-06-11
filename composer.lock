@@ -55,7 +55,7 @@
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/braga/code/tools",
-                "reference": "/trunk/@274"
+                "reference": "/trunk/@302"
             },
             "require": {
                 "php": ">=5.4"
@@ -81,7 +81,7 @@
                 "libs",
                 "tools"
             ],
-            "time": "2017-01-22 18:21:20"
+            "time": "2017-04-29 15:03:40"
         },
         {
             "name": "braga/widgets",
@@ -89,7 +89,7 @@
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/braga/code/widgets",
-                "reference": "/trunk/@281"
+                "reference": "/trunk/@299"
             },
             "require": {
                 "braga/db": "dev-trunk",
@@ -123,7 +123,7 @@
             "keywords": [
                 "widgets jquery-ui"
             ],
-            "time": "2017-01-29 17:38:53"
+            "time": "2017-04-24 19:44:57"
         }
     ],
     "packages-dev": [
@@ -133,7 +133,7 @@
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/simplephpdaogen/code",
-                "reference": "/trunk/@166"
+                "reference": "/trunk/@176"
             },
             "require": {
                 "braga/db": "dev-trunk"
@@ -165,7 +165,7 @@
                 "generator",
                 "orm"
             ],
-            "time": "2016-12-05 18:53:23"
+            "time": "2017-06-07 18:55:26"
         }
     ],
     "aliases": [],

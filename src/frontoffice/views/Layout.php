@@ -31,13 +31,13 @@ class Layout extends HtmlComponent
 	protected function getTitle()
 	{
 		$logout = Tags::span("FizWeb.pl");
-		$retval = Tags::a(Tags::span("", "id='Logo'"), "href='/'");
+		$retval = "FizWeb.pl";
 		if(User::getCurrent() instanceof User)
 		{
 			$logout = Tags::span("", "class='glyphicon glyphicon-log-out'") . " Wyloguj";
 			$retval .= Tags::a(Tags::button($logout, "class='btn btn-lg btn-primmary zPrawej ButtonWG'"), "href='?action=LogOut'");
 
-			$userInfo = "Witaj: " . User::getCurrent()->getUser();
+			$userInfo = "Witaj:&nbsp" . User::getCurrent()->getUser() . "&nbsp:)";
 			$retval .= Tags::span($userInfo, "class='btn btn-lg btn-primmary zPrawej ButtonLogout' style='margin-right:20px;' id='placowka_span'");
 
 			$retval .= $this->getModuleButtons();

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
-	<buildpathentry kind="src" path=""/>
+	<buildpathentry kind="src" path="vendor/braga/dao-generator/src"/>
+	<buildpathentry excluding="tools/" kind="src" path="vendor/braga/tools/src"/>
+	<buildpathentry kind="src" path="vendor/composer"/>
+	<buildpathentry kind="src" path="src/frontoffice/utils"/>
+	<buildpathentry kind="src" path="src/config"/>
+	<buildpathentry excluding="jqueryui/" kind="src" path="vendor/braga/widgets/src"/>
+	<buildpathentry kind="src" path="vendor/braga/widgets/src/jqueryui"/>
+	<buildpathentry excluding="config/|frontoffice/utils/" kind="src" path="src"/>
+	<buildpathentry kind="src" path="vendor/braga/tools/src/tools"/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="vendor/braga/db/src"/>
 </buildpath>

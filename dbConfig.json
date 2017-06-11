@@ -1,0 +1,13 @@
+{
+    "user": "root",
+    "pass": "",
+    "schema": "fizweb",
+    "connection-string": "mysql:host=localhost",
+    "author": "Konrad Bednarek",
+    "output-folder": "src/common",
+    "dao.xml-folder": "doc/dao",
+    "error-prefix": "FW:",
+    "db-driver": "mysql",
+    "project-name": "FizWeb",
+    "namespace": "braga\\wordgame\\common\\"
+}

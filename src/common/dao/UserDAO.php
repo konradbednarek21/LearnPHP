@@ -1,24 +1,20 @@
 <?php
-
 namespace braga\wordgame\common\dao;
-
-use braga\wordgame\common\obj\User;
+use braga\db\DAO;
 use braga\db\DataSource;
 use braga\db\mysql\DB;
 /**
- * Created on 16-01-2017 08:01:01
- * tabela user
- * error prefix WG:657
- * max error WG:65704
- * Genreated by SimplePHPDAOClassGenerator ver EN.2.2.16122211 for EN
- * https://sourceforge.net/projects/simplephpdaogen/
+ * Created on 11-06-2017 09:54:12
+ * @author Konrad Bednarek
+ * @package FizWeb
+ * error prefix FW:101
+ * Genreated by SimplePHPDAOClassGenerator ver 2.2.0
+ * https://sourceforge.net/projects/simplephpdaogen/ 
  * Designed by schama CRUD http://wikipedia.org/wiki/CRUD
- * class generated automatically, please do not modify under pain of
- * OVERWRITTEN WITHOUT WARNING
- * @author gromula
- * @package WG
+ * class generated automatically, please do not modify under pain of 
+ * OVERWRITTEN WITHOUT WARNING 
  */
-class UserDAO
+class UserDAO implements DAO
 {
 	// -------------------------------------------------------------------------
 	protected static $instance = array();
@@ -43,36 +39,36 @@ class UserDAO
 		{
 			if(!$this->retrieve($idUser))
 			{
-				throw new \Exception("WG:65701 " . ORA_SCHEMA . ".user(" . $idUser . ")  nie istnieje.");
+				throw new \Exception("FW:10101 " . DB_SCHEMA . ".user(" . $idUser . ")  does not exists");
 			}
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
 	 * @param int $idUser
-	 * @return User
+	 * @return \braga\wordgame\common\obj\User
 	 */
 	static function get($idUser = null)
 	{
 		if(count(self::$instance) > 100)
 		{
-			self::$instance = null;
+			self::$instance = array();
 		}
 		if(is_numeric($idUser))
 		{
 			if(!isset(self::$instance[$idUser]))
 			{
-				self::$instance[$idUser] = new User($idUser);
+				self::$instance[$idUser] = new static($idUser);
 			}
 			return self::$instance[$idUser];
 		}
 		else
 		{
-			return self::$instance["\$".count(self::$instance)] = new User();
+			return self::$instance["\$".count(self::$instance)] = new static();
 		}
 	}
 	// -------------------------------------------------------------------------
-	protected static function updateFactoryIndex(User $user)
+	protected static function updateFactoryIndex(UserDAO $user)
 	{
 		$key = array_search($user,self::$instance,true);
 		if($key !== false)
@@ -91,14 +87,14 @@ class UserDAO
 	// -------------------------------------------------------------------------
 	/**
 	 * @param DataSource $db
-	 * @return User
+	 * @return \braga\wordgame\common\obj\User
 	 */
 	static function getByDataSource(DataSource $db)
 	{
 		$key = $db->f("iduser");
 		if(!isset(self::$instance[$key]))
 		{
-			self::$instance[$key] = new User();
+			self::$instance[$key] = new static();
 			self::$instance[$key]->setAllFromDB($db);
 		}
 		return self::$instance[$key];
@@ -114,7 +110,7 @@ class UserDAO
 		$this->readed = true;
 	}
 	// -------------------------------------------------------------------------
-	protected function setIdUser($idUser)
+	public function setIdUser($idUser)
 	{
 		if(is_numeric($idUser))
 		{
@@ -252,15 +248,14 @@ class UserDAO
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Metoda odczytuje obiekt klasy User
-	 * (możesz odczytać każdy atrybut obiektu funkcją get...())
-	 * wybrany jako rekord z tabeli user
+	 * Method read object of class User you can read all of atrib by get...() function
+	 * select record from table user
 	 * @return boolean
 	 */
 	protected function retrieve($idUser)
 	{
 		$db = new DB();
-		$sql  = "SELECT * FROM " . ORA_SCHEMA . ".user ";
+		$sql  = "SELECT * FROM " . DB_SCHEMA . ".user ";
 		$sql .= "WHERE iduser = :IDUSER ";
 		$db->setParam("IDUSER", $idUser);
 		$db->query($sql);
@@ -283,7 +278,7 @@ class UserDAO
 	protected function create()
 	{
 		$db = new DB();
-		$sql  = "INSERT INTO " . ORA_SCHEMA . ".user(user, pass, email, points, count_add_word, count_fail_word, api, count_get_word_api) ";
+		$sql  = "INSERT INTO " . DB_SCHEMA . ".user(user, pass, email, points, count_add_word, count_fail_word, api, count_get_word_api) ";
 		$sql .= "VALUES(:USER, :PASS, :EMAIL, :POINTS, :COUNTADDWORD, :COUNTFAILWORD, :API, :COUNTGETWORDAPI) ";
 		$db->setParam("USER",$this->getUser());
 		$db->setParam("PASS",$this->getPass());
@@ -297,15 +292,13 @@ class UserDAO
 		if(1 == $db->getRowAffected())
 		{
 			$this->setIdUser($db->getLastInsertID());
-			$db->commit();
 			self::updateFactoryIndex($this);
 			$this->setReaded();
 			return true;
 		}
 		else
 		{
-			$db->rollback();
-			AddAlert("WG:65702 Insert record into table user fail");
+			AddAlert("FW:10102 Insert record into table user fail");
 			return false;
 		}
 	}
@@ -318,7 +311,7 @@ class UserDAO
 	protected function update()
 	{
 		$db = new DB();
-		$sql  = "UPDATE " . ORA_SCHEMA . ".user ";
+		$sql  = "UPDATE " . DB_SCHEMA . ".user ";
 		$sql .= "SET user = :USER ";
 		$sql .= " , pass = :PASS ";
 		$sql .= " , email = :EMAIL ";
@@ -340,45 +333,40 @@ class UserDAO
 		$db->query($sql);
 		if(1 == $db->getRowAffected())
 		{
-			$db->commit();
 			return true;
 		}
 		else
 		{
-			$db->rollback();
-			AddAlert("WG:65703 Update record in table user fail");
+			AddAlert("FW:10103 Update record in table user fail");
 			return false;
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Metoda usuwa obiekt klasy User
-	 * będącego rekordem w tabeli user
+	 * Method removes object of class User
+	 * removed are record from table user
 	 * @return boolean
 	 */
 	protected function destroy()
 	{
 		$db = new DB();
-		$sql  = "DELETE FROM " . ORA_SCHEMA . ".user ";
+		$sql  = "DELETE FROM " . DB_SCHEMA . ".user ";
 		$sql .= "WHERE iduser = :IDUSER ";
 		$db->setParam("IDUSER", $this->getIdUser());
 		$db->query($sql);
 		if(1 == $db->getRowAffected())
 		{
-			$db->commit();
 			return true;
 		}
 		else
 		{
-			$db->rollback();
-			AddAlert("WG:65704 Usunięcie rekordu z tabeli user nie udało się.");
+			AddAlert("FW:10104 Delete record from table user fail");
 			return false;
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Metoda ustawia wszystkie atrybuty w obiekcie klasy User
-	 * pobrane z obiektu klasy DB
+	 * Methods set all atributes in object of class User from object class DB
 	 * @return void
 	 */
 	protected function setAllFromDB(DataSource $db)
