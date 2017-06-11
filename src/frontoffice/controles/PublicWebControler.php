@@ -4,9 +4,8 @@ namespace braga\wordgame\frontoffice\controles;
 
 use braga\tools\html\Controler;
 use braga\tools\tools\PostChecker;
-use braga\wordgame\frontoffice\views\Layout;
 use braga\wordgame\frontoffice\forms\LoginForm;
-use braga\wordgame\frontoffice\utils\BootstrapTags;
+use braga\wordgame\frontoffice\views\Layout;
 
 class PublicWebControler extends Controler
 {

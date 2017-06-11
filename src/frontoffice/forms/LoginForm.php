@@ -1,10 +1,9 @@
 <?php
 namespace braga\wordgame\frontoffice\forms;
 
-use braga\widgets\bootstrap\TextField;
-use braga\wordgame\frontoffice\utils\Tags;
-use braga\wordgame\frontoffice\utils\BootstrapTags;
 use braga\tools\html\HtmlComponent;
+use braga\wordgame\frontoffice\utils\BootstrapTags;
+use braga\wordgame\frontoffice\utils\Tags;
 
 /**
  * Created on 8 lip 2016 10:32:42
