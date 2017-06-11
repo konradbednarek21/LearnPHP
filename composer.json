@@ -22,5 +22,6 @@
 	"type" : "project",
 	"authors" : [{
 			"name" : "Bartosz Gromowski"
-		}]
+		}
+	]
 }

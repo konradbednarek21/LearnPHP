@@ -1,6 +1,5 @@
 <?php
 
-namespace braga\wordgame\frontoffice\utils;
 
 /**
  *
