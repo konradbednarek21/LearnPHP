@@ -41,8 +41,10 @@ class WebControler extends Controler
 	// -------------------------------------------------------------------------
 	private function makeWorkArea()
 	{
+		$retval = "Hello";
 		
-	}
+		$this->r->addPage($retval); 
+	} 
 	// -------------------------------------------------------------------------
 	
 	//moja próba tworzenia tresci na stronie

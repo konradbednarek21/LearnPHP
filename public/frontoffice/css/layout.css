@@ -48,10 +48,11 @@ body {
 #Logo {
 	background-image: url("/img/logo.png");
 	display: inline-block;
-	width: 100px;
-	height: 108px;
+	width: 40px;
+	height: 44px;
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: contain;
 }
 /* ========================================================================== */
 #LoginForm {
@@ -80,7 +81,6 @@ body {
 }
 /* ========================================================================== */
 #MainBox {
-	text-align: center;
 }
 
 /* ========================================================================== */
@@ -255,5 +255,4 @@ body {
 
 #MainArea()
 {
-	text-align: center;
 }

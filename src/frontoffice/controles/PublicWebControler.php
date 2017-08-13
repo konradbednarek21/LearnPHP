@@ -6,6 +6,7 @@ use braga\tools\html\Controler;
 use braga\tools\tools\PostChecker;
 use braga\wordgame\frontoffice\forms\LoginForm;
 use braga\wordgame\frontoffice\views\Layout;
+use braga\wordgame\frontoffice\utils\Tags;
 
 class PublicWebControler extends Controler
 {
@@ -38,6 +39,30 @@ class PublicWebControler extends Controler
 	// -------------------------------------------------------------------------
 	private function getMakeWorkArea()
 	{
+		$retval = $this->getFirstLine();
+		
+		$this->r->addPage($retval); 
+	}
+	// -------------------------------------------------------------------------
+	private function getFirstLine()
+	{
+		$karuzela = $this->getKaruzela();
+		$retval = Tags::div($karuzela,"class='col-md-9 col-sm-6'");
+		$retval .= Tags::div($this->getKimJestem(),"class='col-md-3 col-sm-6'");
+		$retval = Tags::div($retval,"class='row'");
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	private function getKimJestem()
+	{
+		$retval = Tags::h1("Kim jestesmy");
+		return Tags::div($retval, "class='jumbotron'");
+	}
+	// -------------------------------------------------------------------------
+	private function getKaruzela()
+	{
+		$retval = Tags::h1("Jumbo");
+		return Tags::div($retval, "class='jumbotron'");
 	}
 	// -------------------------------------------------------------------------
 	private function makeWorkArea()
