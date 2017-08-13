@@ -25,10 +25,41 @@ class Layout extends HtmlComponent
 		$retval = $this->getTitle();
 		$retval .= $this->getMessageArea();
 		$retval .= $this->getMainArea();
+		$retval .= $this->getFooterArea();
 		Page::make($retval);
 	}
 	// -------------------------------------------------------------------------
-	protected function getTitle()
+	private function getTitle()
+	{
+		$retval = Tags::div($this->getTitleLogo(),"class='TitleLogo'");
+		$retval .= Tags::div($this->getTitleMenu(), "class='TitleMenu'");
+		$retval .= Tags::div($this->getTitleZalogujWyloguj(), "class='TitleZalogujWyloguj'");
+		$retval = BootstrapTags::container($retval);
+		$retval = BootstrapTags::containerFluid($retval, "TitleBox");
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	private function getTitleMenu()
+	{
+		$retval = "Zakładka 1";
+		$retval .= "&nbsp;Zakładka 2";
+		$retval .= "&nbsp;Zakładka 3";
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	private function getTitleZalogujWyloguj()
+	{
+		$retval = "Zaloguj/Wyloguj";
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	private function getTitleLogo()
+	{
+		$retval = Tags::div("","id='Logo'");
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	protected function getTitle1()
 	{
 		$logout = Tags::span("FizWeb.pl");
 		$retval = "FizWeb.pl";
@@ -44,8 +75,8 @@ class Layout extends HtmlComponent
 		}
 		else
 		{
-			$logout = Tags::span("", "class='glyphicon glyphicon-log-out'") . " Zaloguj sie";
-			$retval .= Tags::a(Tags::button($logout, "class='btn btn-lg btn-primmary zPrawej       ButtonWG'"), "href='?action=Login'");
+			$logout = Tags::span("", "class='glyphicon glyphicon-log-in'") . " Zaloguj sie";
+			$retval .= Tags::a(Tags::button($logout, "class='btn btn-lg btn-primmary zPrawej ButtonWG'"), "href='?action=Login'");
 		}
 
 		$retval = BootstrapTags::container($retval);
@@ -84,5 +115,13 @@ class Layout extends HtmlComponent
 		return $retval;
 	}
 	// -------------------------------------------------------------------------
+	protected function getFooterArea()
+	{
+		$retval = "FizWeb.pl &copy; Konrad.Bednarek21@gmail.com";
+		$retval = BootstrapTags::container($retval);
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	
 }
 ?>

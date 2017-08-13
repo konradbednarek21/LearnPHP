@@ -44,5 +44,28 @@ class WebControler extends Controler
 		
 	}
 	// -------------------------------------------------------------------------
+	
+	//moja próba tworzenia tresci na stronie
+	
+	private function getGeneralMenu()
+	{
+		$retval = Tags::div($this->getBigBox(),"class='BigBox'");
+		$retval .= Tags::div($this->getRightBox(), "class='RightBox'");
+		$retval = BootstrapTags::container($retval);
+		$retval = BootstrapTags::containerFluid($retval, "GeneralMenu");
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	private function getBigBox()
+	{
+		$retval = "Tresc";
+		return $retval;
+	}
+	// -------------------------------------------------------------------------
+	private function RightBox()
+	{
+		$retval = "Prawa tresc";
+		return $retval;
+	}
 }
 ?>

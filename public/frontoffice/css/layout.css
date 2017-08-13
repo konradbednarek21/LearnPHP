@@ -48,8 +48,8 @@ body {
 #Logo {
 	background-image: url("/img/logo.png");
 	display: inline-block;
-	width: 96px;
-	height: 96px;
+	width: 100px;
+	height: 108px;
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -80,7 +80,7 @@ body {
 }
 /* ========================================================================== */
 #MainBox {
-	min-height: 450px;
+	text-align: center;
 }
 
 /* ========================================================================== */
@@ -88,6 +88,24 @@ body {
 	padding: 20px;
 }
 
+#TitleBox .TitleLogo
+{
+	display: inline-block;
+	width: 100px;
+}
+#TitleBox .TitleMenu
+{
+	display: inline-block;
+	width: 700px;
+	border: 1px green solid;
+	font-size: large;
+}
+#TitleBox .TitleZalogujWyloguj
+{
+	display: inline-block;
+	width: 325px;
+	border: 1px blue solid;
+}
 #NavBox {
 	margin-bottom: 16px;
 }
@@ -220,4 +238,22 @@ body {
 .scrable:hover {
 	-webkit-transform: scale(1.2);
 	transform: scale(1.2);
+}
+
+/* moja próba tworzenia tresci na stronie  */
+
+#GeneralBox 
+{
+	display: inline-block;
+}
+
+#RightBox
+{
+	display: inline-block;
+	
+}
+
+#MainArea()
+{
+	text-align: center;
 }
