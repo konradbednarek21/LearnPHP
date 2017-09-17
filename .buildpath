@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
-	<buildpathentry kind="src" path="vendor/braga/dao-generator/src"/>
-	<buildpathentry excluding="tools/" kind="src" path="vendor/braga/tools/src"/>
-	<buildpathentry kind="src" path="vendor/composer"/>
-	<buildpathentry kind="src" path="src/frontoffice/utils"/>
-	<buildpathentry kind="src" path="src/config"/>
-	<buildpathentry excluding="jqueryui/" kind="src" path="vendor/braga/widgets/src"/>
-	<buildpathentry kind="src" path="vendor/braga/widgets/src/jqueryui"/>
-	<buildpathentry excluding="config/|frontoffice/utils/" kind="src" path="src"/>
-	<buildpathentry kind="src" path="vendor/braga/tools/src/tools"/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
-	<buildpathentry kind="src" path="vendor/braga/db/src"/>
+	<buildpathentry kind="src" path="src/config">
+		<attributes>
+			<attribute name="composer" value="source"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="config/|frontoffice/utils/" kind="src" path="src">
+		<attributes>
+			<attribute name="composer" value="source"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="src/frontoffice/utils">
+		<attributes>
+			<attribute name="composer" value="source"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/braga/dao-generator/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/braga/db/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="tools/" kind="src" path="vendor/braga/tools/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/braga/tools/src/tools">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="jqueryui/" kind="src" path="vendor/braga/widgets/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/braga/widgets/src/jqueryui">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/composer">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 </buildpath>
