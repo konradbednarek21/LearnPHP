@@ -1,0 +1,258 @@
+@CHARSET "UTF-8";
+
+body {
+	padding-top: 70px;
+}
+/* ========================================================================== */
+#MsgBox {
+	text-align: center;
+	padding: 4px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+#MsgBox p {
+	font-size: 22px;
+	margin: 0px;
+}
+
+#MsgBox p:first-child {
+	font-size: 43px;
+	line-height: 40px;
+	margin: 0px;
+}
+/* ========================================================================== */
+#MenuBox {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#GameBox {
+	width: 50%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+#InfoBox {
+	
+}
+
+#GameRoomList {
+	
+}
+/* ========================================================================== */
+#ScrableTable {
+	background-color: #d6bc83;
+}
+/* ========================================================================== */
+#Logo {
+	background-image: url("/img/logo.png");
+	display: inline-block;
+	width: 40px;
+	height: 44px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+/* ========================================================================== */
+#LoginForm {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	background-color: #F0F0F0;
+	border: 2px #C0C0C0 solid;
+	padding: 5px;
+	width: 340px;
+	border-radius: 3px;
+}
+
+#LoginForm .LoginFormTitle {
+	background-image: url("/img/icon.png");
+}
+
+#LoginForm input {
+	margin-left: auto;
+	margin-right: auto;
+	margin: 20px 40px;
+}
+
+#LoginForm div:first-child {
+	width: 250px;
+}
+/* ========================================================================== */
+#MainBox {
+}
+
+/* ========================================================================== */
+#TitleBox {
+	padding: 20px;
+}
+
+#TitleBox .TitleLogo
+{
+	display: inline-block;
+	width: 100px;
+}
+#TitleBox .TitleMenu
+{
+	display: inline-block;
+	width: 700px;
+	border: 1px green solid;
+	font-size: large;
+}
+#TitleBox .TitleZalogujWyloguj
+{
+	display: inline-block;
+	width: 325px;
+	border: 1px blue solid;
+}
+#NavBox {
+	margin-bottom: 16px;
+}
+
+#ItemBox {
+	margin-bottom: 16px;
+}
+/* ========================================================================== */
+.SelectModuleButton {
+	margin-top: 20px;
+	line-height: 25px !important;
+	font-size: 200%;
+	margin-bottom: 20px;
+	box-shadow: 0px 0px 29px -10px rgba(0, 0, 0, 0.75);
+}
+/* ========================================================================== */
+.ButtonWG {
+	box-shadow: 0px 0px 29px -10px rgba(0, 0, 0, 0.75);
+	padding: 15px 40px;
+}
+/* ========================================================================== */
+.ButtonLogout {
+	box-shadow: 0px 0px 29px -10px rgba(0, 0, 0, 0.75);
+	padding: 15px 40px;
+}
+/* ========================================================================== */
+.StartButton {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+/* ========================================================================== */
+.OrangeButton {
+	background-image: url("/img/orange.png") !important;
+	height: 75px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.PlayButton {
+	background-image: url("/img/play.png") !important;
+	height: 75px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.PlusButton {
+	background-image: url("/img/plus.png") !important;
+	height: 75px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.TmobileButton {
+	background-image: url("/img/tmobile.png") !important;
+	height: 75px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+/* ========================================================================== */
+.AdminDodajButton {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.AdminEdytujButton {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.AdminSzukajButton {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.AdminZablokujButton {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+/* ========================================================================== */
+.labelRegister {
+	margin-left: 10px;
+	font-size: 16px;
+	color: #7a7986;
+	font-family: inherit;
+}
+
+.labelSuccess {
+	text-align: center;
+	font-size: 35px;
+	color: #00ff00;
+	font-family: inherit;
+}
+
+.divSuccess {
+	margin-left: 5px;
+	margin-right: 5px;
+	text-align: center;
+}
+/* ========================================================================== */
+.scrable {
+	display: block;
+	float: left;
+	width: 36px;
+	height: 36px;
+	margin: 3px;
+	text-indent: 12px;
+	line-height: 36px;
+	border: 1px #d6bc83 solid;
+	border-radius: 2px;
+	color: #000;
+	text-shadow: -1px -1px 1px rgb(40, 40, 40);
+	font-family: "NewsGoth Cn BT", Optima-Thin, "MS Gothic";
+	font-size: 24px;
+	background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0.5, rgb(222
+		, 196, 139)), color-stop(0.7, rgb(230, 204, 147)));
+	background-image: -moz-linear-gradient(right bottom, rgb(222, 196, 139)
+		50%, rgb(230, 204, 147) 70%,);
+	-moz-box-shadow: 0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
+	-webkit-box-shadow: 0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px
+		#b69c63;
+	box-shadow: 0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.scrable sub {
+	font-size: 10px;
+}
+
+.scrable:hover {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+/* moja próba tworzenia tresci na stronie  */
+
+#GeneralBox 
+{
+	display: inline-block;
+}
+
+#RightBox
+{
+	display: inline-block;
+	
+}
+
+#MainArea()
+{
+}
