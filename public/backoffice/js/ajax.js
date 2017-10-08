@@ -1,89 +1,20 @@
 var ajax = new Ajax();
+var stats = [];
+bootbox.setLocale('pl');
 // -----------------------------------------------------------------------------
 function Ajax()
 {
-	Ajax.prototype.go = function(sender, asynchronic)
-	{
-		return go(sender, asynchronic);
-	};
-	Ajax.prototype.get = function(url, asynchronic)
-	{
-		return get(url, asynchronic);
-	};
-	Ajax.prototype.odbierzDane = function(data, textStatus, idMarker)
-	{
-		return odbierzDane(data, textStatus, idMarker);
-	};
 	// -------------------------------------------------------------------------
-	var toClose = new Array();
+	var closePopUp = true;
 	// -------------------------------------------------------------------------
-	function get(url, asynchronic)
+	Ajax.prototype.odbierzDane = function(data, textStatus, idMarker,  startTime)
 	{
-		if (typeof asynchronic == 'undefined')
-		{
-			asynchronic = true;
-		}
-		var random = new String(getRandomString(8));
-		if (!asynchronic)
-		{
-			showLoading(random);
-		}
-		$.get(url, function(data, textStatus)
-		{
-			ajax.odbierzDane(data, textStatus, random);
-		});
-		return false;
-	}
-	// -------------------------------------------------------------------------
-	function go(sender, asynchronic)
-	{
-		if (typeof synchoniczne == 'undefined')
-		{
-			asynchronic = false;
-		}
-		var random = new String(getRandomString(8));
-		var domEl = $(sender).get(0);
-		if (domEl.tagName.toLowerCase() == "a")
-		{
-			var url = new String($(sender).attr("href") + "&js=1");
-			if (!asynchronic)
-			{
-				showLoading(random);
-			}
-			$.get(url, function(data, textStatus)
-			{
-				ajax.odbierzDane(data, textStatus, random);
-			});
-
-		}
-		else if (domEl.tagName.toLowerCase() == "form")
-		{
-			if (beforeSubmit(sender))
-			{
-				if (!asynchronic)
-				{
-					showLoading(random);
-				}
-				var url = sender.getAttribute("action", 2);
-				var post = $(sender).serialize() + "&js=1";
-				$.post(url, post, function(data, textStatus)
-				{
-					ajax.odbierzDane(data, textStatus, random);
-				});
-			}
-			else
-			{
-				hideLoading(random);
-			}
-		}
-		return false;
-	}
-	// -------------------------------------------------------------------------
-	function odbierzDane(data, textStatus, idMarker)
-	{
+		closePopUp = true;
+		var d = new Date();
+		var endTime = d.getTime();
+		var allTime = endTime - startTime;
 		if (textStatus == "success")
 		{
-			resetSessionCounter();
 			try
 			{
 				var elementy = data.getElementsByTagName("changes")[0].getElementsByTagName("*");
@@ -108,70 +39,190 @@ function Ajax()
 							closePopUp(node);
 							break;
 						case "sustain":
-							sustain(node.getAttribute("id"));
+							sustain();
 							break;
 						case "remove":
-							remove(node.getAttribute("id"));
+							killElement(node);
 							break;
-						case "reload":
-							reload(node.getAttribute("url"));
+						case "time":
+							addProcesingStats(node, allTime);
 							break;
 					}
 				}
+				$('[data-toggle="tooltip"]').tooltip();
 				clean();
 			}
 			catch (err)
 			{
-				var window = new PopUpWindow("AlertBox");
-				window.create("Błąd: " + err.message);
-				window.setContent(data);
+				bootbox.alert({title: 'Błąd: ' + err.message,message:data});
 			}
 		}
 		else
 		{
 			addAlert(data, textStatus);
 		}
-		hideLoading(idMarker);
-	}
+		hideLoading(idMarker);		
+	};
 	// -------------------------------------------------------------------------
-	function reload(url)
+	Ajax.prototype.go = function(sender, asynchronic)
 	{
-		location.href = url;
-	}
-	// -------------------------------------------------------------------------
-	function clean()
-	{
-		$("div.WindowBox").each(function()
+		if (typeof synchoniczne == 'undefined')
 		{
-			if (typeof toClose[$(this).children(".WindowBoxContent:first").attr("id")] == "undefined")
+			asynchronic = false;
+		}
+		var random = new String(getRandomString(8));
+		var domEl = $(sender).get(0);
+		var d = new Date();
+		var startTime = d.getTime();
+		if (domEl.tagName.toLowerCase() == "a")
+		{
+			var url = new String($(sender).attr("href"));
+			url += "&js=true";
+			if (!asynchronic)
 			{
-				closeWindow($(this).children(".WindowBoxContent:first").attr("id"));
+				showLoading(random);
 			}
-		});
-		toClose = new Array();
-	}
-	// -------------------------------------------------------------------------
-	function sustain(id)
-	{
-		if (id.substr(0, 1) == "#")
+			$.get(url, function(data, textStatus)
+			{
+				ajax.odbierzDane(data, textStatus, random,  startTime);
+			});
+
+		}
+		else if (domEl.tagName.toLowerCase() == "form")
 		{
-			toClose[id.substr(1)] = 2;
+			if (BeforeSubmit(sender))
+			{
+				if (!asynchronic)
+				{
+					showLoading(random);
+				}
+				var url = sender.getAttribute("action", 2);
+				post = $(sender).serialize() + "&js=true";
+				$.post(url, post, function(data, textStatus)
+				{
+					ajax.odbierzDane(data, textStatus, random,  startTime);
+				});
+			}
+			else
+			{
+				hideLoading(random);
+			}
+		}
+		return false;
+	};
+	// -------------------------------------------------------------------------
+	Ajax.prototype.get = function(url, asynchronic)
+	{
+		if (typeof asynchronic == 'undefined')
+		{
+			asynchronic = true;
+		}
+
+		url += "&js=true";
+		var random = new String(getRandomString(8));
+
+		var d = new Date();
+		var startTime = d.getTime();
+		if (asynchronic)
+		{
+			$.get(url, function(data, textStatus)
+			{
+				ajax.odbierzDane(data, textStatus, random, startTime);
+			});
 		}
 		else
 		{
-			toClose[id] = 1;
+			showLoading(random);
+			$.ajax(url,
+			{
+				async : false,
+				success : function(data, textStatus)
+				{
+					ajax.odbierzDane(data, textStatus, random, startTime);
+				}
+
+			});
+		}
+		return false;
+	};
+	// -------------------------------------------------------------------------
+	function clean()
+	{		
+		if(closePopUp)
+		{
+			bootbox.hideAll();
 		}
 	}
 	// -------------------------------------------------------------------------
-	function remove(id)
+	function sustain()
 	{
-		$(id).remove();
+		closePopUp = false;
+	}
+	// -------------------------------------------------------------------------
+	function addProcesingStats(node, allTime)
+	{
+		var serverTime = parseInt(node.childNodes[0].nodeValue);
+		var networkTime = allTime - serverTime;
+
+		var tmp =
+		{
+			serverTime : serverTime,
+			networkTime : networkTime,
+			allTime : allTime
+		};
+		stats.push(tmp);
+		if (stats.length > 10)
+		{
+			stats.shift();
+		}
+
+		var serverTimeSum = 0;
+		var networkTimeSum = 0;
+		var allTimeSum = 0;
+		for (var int = 0; int < stats.length; int++)
+		{
+			var tmp = stats[int];
+			serverTimeSum += tmp.serverTime;
+			networkTimeSum += tmp.networkTime;
+			allTimeSum += tmp.allTime;
+		}
+
+		var networkTimeAvg = Math.round(networkTimeSum / stats.length);
+		var serverTimeAvg = Math.round(serverTimeSum / stats.length);
+		var allTimeAvg = Math.round(allTimeSum / stats.length);
+
+		var statsBoxContent = "<p>last req";
+		statsBoxContent += "<span style='color:" + getColor(networkTime) + "'>Sieć: " + networkTime + " ms</span>";
+		statsBoxContent += "<span style='color:" + getColor(serverTime) + "'>Serwer: " + serverTime + " ms</span>";
+		statsBoxContent += "<span style='color:" + getColor(allTime) + "'>Razem: " + allTime + " ms</span></p>";
+		statsBoxContent += "<p>last 10 req";
+		statsBoxContent += "<span style='color:" + getColor(networkTimeAvg) + "'>Sieć: " + networkTimeAvg + " ms</span>";
+		statsBoxContent += "<span style='color:" + getColor(serverTimeAvg) + "'>Serwer: " + serverTimeAvg + " ms</span>";
+		statsBoxContent += "<span style='color:" + getColor(allTimeAvg) + "'>Razem: " + allTimeAvg + " ms</span></p>";
+
+		$("#StatsBox").html(statsBoxContent);
+	}
+	// -------------------------------------------------------------------------
+	function getColor(time)
+	{
+		if (time < 1000)
+		{
+			return "green";
+		}
+		else if (time < 2000)
+		{
+			return "yellow";
+		}
+		else
+		{
+			return "red";
+		}
+
 	}
 	// -------------------------------------------------------------------------
 	function closePopUp(node)
 	{
-		var idObject = node.getAttribute("id");
-		closeWindow(idObject);
+		bootbox.hideAll();
 	}
 	// -------------------------------------------------------------------------
 	function changeElement(node)
@@ -180,13 +231,13 @@ function Ajax()
 		var content = node.childNodes[0].nodeValue;
 		$(idObject).html(content);
 		$(idObject).trigger('load');
-		if (idObject = "#MsgBox")
-		{
-			var o = $("#MsgBox").offset();
-			$(document).scrollTop(o.top);
-			$(idObject).show();
-		}
-		sustain(idObject);
+		$(idObject).show();
+	}
+	// -------------------------------------------------------------------------
+	function killElement(node)
+	{
+		var idObject = node.getAttribute("id");
+		$(idObject).remove();
 	}
 	// -------------------------------------------------------------------------
 	function appendElement(node)
@@ -195,7 +246,6 @@ function Ajax()
 		var content = node.childNodes[0].nodeValue;
 		$(idObject).append(content);
 		$(idObject).trigger('load');
-		sustain(idObject);
 	}
 	// -------------------------------------------------------------------------
 	function changeAttribElement(node)
@@ -204,17 +254,17 @@ function Ajax()
 		var attrbName = node.getAttribute("name");
 		var attrbValue = node.getAttribute("value");
 		$(idObject).attr(attrbName, attrbValue);
-		sustain(idObject);
 	}
 	// -------------------------------------------------------------------------
 	function popUpWinElement(node)
 	{
 		var idContener = node.getAttribute("id");
-		var title = node.getAttribute("title");
-		showLoading(idContener);
-		var window = new PopUpWindow(idContener);
-		window.create(title);
-		sustain(idContener);
+		var title1 = node.getAttribute("title");
+		bootbox.dialog( {
+			title:title1 , 
+			message: '<div id="'+idContener+'"></div>'
+			});
+		sustain();
 	}
 	// -------------------------------------------------------------------------
 	function showLoading(idMarker)
@@ -222,18 +272,14 @@ function Ajax()
 		var idSnow = "#snow_" + idMarker;
 		if (!$(idSnow).length)
 		{
-			$("body:first").append("<div id='snow_" + idMarker + "' class='a' style='background-color:white;' />");
-			$(idSnow).width($(document).outerWidth(true));
+			$("body:first").append("<div id='snow_" + idMarker + "' class='a ui-widget-overlay'></div>");
+			$(idSnow).width($("body:first").outerWidth(true));
 			$(idSnow).height($(document).height());
 			$(idSnow).css("left", "0px");
 			$(idSnow).css("top", "0px");
 			$(idSnow).css("opacity", "-0.3");
-			$(idSnow).fadeTo(3000, 0.7);
-			$(window).resize(function()
-			{
-				$(idSnow).width($(document).outerWidth(true));
-				$(idSnow).height($(document).height());
-			});
+			$(idSnow).css("z-index", "10");
+			$(idSnow).fadeTo(5000, 0.7);
 		}
 	}
 	// -------------------------------------------------------------------------

@@ -3,62 +3,78 @@
 namespace braga\wordgame\backoffice\views;
 
 use braga\tools\html\HtmlComponent;
-use braga\wordgame\frontoffice\utils\Tags;
-use braga\wordgame\frontoffice\utils\BootstrapTags;
-use braga\wordgame\frontoffice\utils\Page;
+use braga\wordgame\backoffice\utils\Page;
+use braga\wordgame\backoffice\utils\Tags;
+use braga\wordgame\common\obj\Modul;
+use braga\wordgame\common\obj\PrawaModul;
+use braga\wordgame\common\obj\Uzytkownik;
 
-class Layout extends HtmlComponent
-{
+class Layout extends HtmlComponent {
 	// -------------------------------------------------------------------------
-	protected function getMessageArea()
-	{
-		$m = new MessageView();
-		$retval = $m->out();
-		$retval = Tags::div($retval, "id='MsgBox'");
-		$retval = BootstrapTags::container($retval);
+	public function out() {
+		$msg = new MessageView ();
+		$retval = "";
+		$retval .= Tags::div ( "", "id='LeftMenu'  class='col-xs-6 col-sm-4 col-md-4 col-lg-3'" );
+		$retval .= Tags::div ( $this->content, "id='MainBox'  class='col-xs-6 col-sm-8 col-md-8 col-lg-9'" );
+		$retval = Tags::div ( $retval, "class='row'" );
+		$retval = Tags::div ( $retval, "class='container-fluid'" );
+
+		$retval .= Tags::div ( $msg->out (), "id='MsgBox' class='container-fluid'" );
+		$retval .= $this->addMenu ();
+		Page::make ( $retval );
+	}
+	// -------------------------------------------------------------------------
+	protected function addMenu() {
+		$retval = "";
+		if (Modul::getCurrent ()->getIdModul () != Modul::START) {
+			$retval .= $this->addStartTab ();
+		} else {
+			$retval .= $this->addStartTabActive ();
+		}
+		$menu = "";
+		foreach ( Uzytkownik::getCurrent ()->getWaznePrawa () as $p)/* @var $p PrawaModul */
+		{
+			$menu .= $this->addMenuTab ( $p );
+		}
+		$retval .= Tags::ul ( $menu, "class='nav navbar-nav'" );
+		$retval .= $this->addLogoutTab ();
+		$retval = Tags::div ( $retval, "class='container-fluid'" );
+		$retval = Tags::nav ( $retval, "class='navbar navbar-default navbar-fixed-top' id='Menu'" );
 		return $retval;
 	}
 	// -------------------------------------------------------------------------
-	public function out()
-	{
-		$retval = $this->getTitle();
-		$retval .= $this->getMainArea();
-		$retval .= $this->getFooterArea();
-		$retval .= $this->getMessageArea();
-		Page::make($retval);
-	}
-	// -------------------------------------------------------------------------
-	private function getTitle()
-	{
-		$menu = Tags::li(Tags::a("FizWeb.pl Backoffice","href='/'"));
-		$menu .= Tags::li(Tags::a("Administracja","href='/admin'"));
-		$menu .= Tags::li(Tags::a("Tresci","href='/content'"));
-		$retval = Tags::ul($menu,"class='nav navbar-nav'");
-		$retval = BootstrapTags::container($retval);
-		$retval = Tags::nav($retval,"class='navbar navbar-default navbar-fixed-top'");
+	protected function addMenuTab(PrawaModul $p) {
+		if (Modul::getCurrent ()->getIdModul () == $p->getModul ()->getIdModul ()) {
+			$retval = Tags::li ( Tags::a ( Tags::span ( $p->getModul ()->getNazwa (), "class=''" ), "href='/" . $p->getModul ()->getFolder () . "/'" ), "class='active'" );
+		} else {
+			$retval = Tags::li ( Tags::a ( Tags::span ( $p->getModul ()->getNazwa (), "class=''" ), "href='/" . $p->getModul ()->getFolder () . "/'" ), "class=''" );
+		}
 		return $retval;
 	}
 	// -------------------------------------------------------------------------
-	private function getTitleLogo()
-	{
-		$retval = Tags::div("","id='Logo'");
+	protected function addLogoutTab() {
+		$buttonMenu = faIcon ( "fa-fw fa-lg fa-user-circle-o" ) . "Witaj " . Uzytkownik::getCurrent ()->getFullName ();
+		$buttonMenu .= Tags::span ( "", "class='caret'" );
+		$buttonMenu = Tags::a ( $buttonMenu, 'href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"' );
+
+		$menu = Tags::li ( Tags::ajaxLink ( "/?action=ChangePassForm", faIcon ( "fa-fw fa-lg fa-key" ) . "Zmień hasło" ) );
+		$menu .= Tags::li ( Tags::a ( faIcon ( "fa-fw fa-lg fa-sign-out" ) . "Wyloguj", "href='/?action=Logout'" ) );
+		$menu = Tags::ul ( $menu, "class='dropdown-menu'" );
+
+		$retval = Tags::li ( $buttonMenu . $menu, "class='dropdown'" );
+		$retval = Tags::ul ( $retval, "class='nav navbar-nav navbar-right'" );
 		return $retval;
 	}
 	// -------------------------------------------------------------------------
-	protected function getMainArea()
-	{
-		$retval = BootstrapTags::container(Tags::div($this->content, "id='MainBox'"));
+	protected function addStartTab() {
+		$retval = Tags::div ( Tags::a ( "Start", "href='/' class='navbar-brand'" ), "class='navbar-header'" );
 		return $retval;
 	}
 	// -------------------------------------------------------------------------
-	protected function getFooterArea()
-	{
-		$retval = Tags::h3("FizWeb.pl &copy; konrad.bednarek21@gmail.com","class='c'");
-		$retval = BootstrapTags::container($retval);
-		$retval = Tags::nav($retval,"class='navbar navbar-default navbar-fixed-bottom'");
+	protected function addStartTabActive() {
+		$retval = Tags::div ( Tags::a ( "Start", "href='/' class='navbar-brand'" ), "class='navbar-header active'" );
 		return $retval;
 	}
 	// -------------------------------------------------------------------------
-	
 }
 ?>

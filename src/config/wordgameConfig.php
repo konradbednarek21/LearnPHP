@@ -51,3 +51,5 @@ mb_internal_encoding("utf8");
 ini_set("max_execution_time", "0");
 date_default_timezone_set("Europe/Warsaw");
 
+
+Logger::configure(INSTALL_DIRECTORY . "loggerConfig.xml");

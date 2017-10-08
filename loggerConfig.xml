@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration xmlns="http://logging.apache.org/log4php/">
+	<appender
+		name="main"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/deyn.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="http"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/http.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="php"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/php.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="braga"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/braga.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="cron"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/cron.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="hitelWS"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/hitelRawWs.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="deynWS"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/deynRawWs.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<appender
+		name="capitalWS"
+		class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param
+				name="conversionPattern"
+				value="%date{Y-m-d H:i:s,u};%level;%message;%throwable%newline" />
+		</layout>
+		<param
+			name="file"
+			value="c:/worspace/fizweb/log/log/capitalWS.%s.log" />
+		<param
+			name="datePattern"
+			value="Y-m-d" />
+	</appender>
+	<logger name="main">
+		<level value="trace" />
+		<appender_ref ref="main" />
+	</logger>
+	<logger name="braga">
+		<level value="trace" />
+		<appender_ref ref="braga" />
+	</logger>
+	<logger name="php">
+		<level value="trace" />
+		<appender_ref ref="php" />
+	</logger>
+	<logger name="http">
+		<level value="trace" />
+		<appender_ref ref="http" />
+	</logger>
+	<logger name="cron">
+		<level value="trace" />
+		<appender_ref ref="cron" />
+	</logger>
+	<logger name="import">
+		<level value="trace" />
+		<appender_ref ref="cron" />
+	</logger>
+	<logger name="hitelWS">
+		<level value="trace" />
+		<appender_ref ref="hitelWS" />
+	</logger>
+	<logger name="deynWS">
+		<level value="trace" />
+		<appender_ref ref="deynWS" />
+	</logger>
+	<logger name="capitalWS">
+		<level value="trace" />
+		<appender_ref ref="capitalWS" />
+	</logger>
+</configuration>

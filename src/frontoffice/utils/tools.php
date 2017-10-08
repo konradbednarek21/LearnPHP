@@ -1,6 +1,8 @@
 <?php
 
 
+use braga\wordgame\frontoffice\utils\Tags;
+
 /**
  *
  * @author Tomasz.Gajewski

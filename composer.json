@@ -1,11 +1,11 @@
 {
 	"require-dev" : {
-		"braga/dao-generator" : "dev-trunk"
+		"braga/dao-generator" : "~2"
 	},
 	"require" : {
-		"braga/db" : "dev-trunk",
-		"braga/tools" : "dev-trunk",
-		"braga/widgets" : "dev-trunk"
+		"braga/db" : "~2",
+		"braga/tools" : "~2",
+		"braga/widgets" : "~2"
 	},
 	"autoload" : {
 		"psr-4" : {
@@ -17,7 +17,7 @@
 		]
 	},
 	"name" : "wordgame",
-	"minimum-stability" : "dev",
+	"minimum-stability" : "stable",
 	"license" : "MIT",
 	"type" : "project",
 	"authors" : [{

@@ -5,7 +5,7 @@ use braga\db\DataSource;
 use braga\db\mysql\DB;
 use braga\db\Collection;
 /**
- * Created on 11-06-2017 09:54:12
+ * Created on 17-09-2017 10:33:32
  * @author Konrad Bednarek
  * @package FizWeb
  * error prefix FW:101
@@ -195,11 +195,11 @@ class ArtykulDAO implements DAO
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * @param UzykownikDAO $uzykownik
+	 * @param UzytkownikDAO $uzytkownik
 	 */
-	public function setUzytkownik(UzykownikDAO $uzykownik)
+	public function setUzytkownik(UzytkownikDAO $uzytkownik)
 	{
-		$this->idUzytkownik = $uzykownik->getIdUzytkownik();
+		$this->idUzytkownik = $uzytkownik->getIdUzytkownik();
 	}
 	// -------------------------------------------------------------------------
 	public function getIdArtykul()
@@ -251,11 +251,11 @@ class ArtykulDAO implements DAO
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * @return \braga\wordgame\common\obj\Uzykownik
+	 * @return \braga\wordgame\common\obj\Uzytkownik
 	 */
 	public function getUzytkownik()
 	{
-		return \braga\wordgame\common\obj\Uzykownik::get($this->getIdUzytkownik());
+		return \braga\wordgame\common\obj\Uzytkownik::get($this->getIdUzytkownik());
 	}
 	// -------------------------------------------------------------------------
 	/**
@@ -405,13 +405,13 @@ class ArtykulDAO implements DAO
 	 * Methods return colection of  Artykul
 	 * @return Collection &lt;Artykul&gt; 
 	 */
-	public static function getAllByUzytkownik(UzykownikDAO $uzykownik)
+	public static function getAllByUzytkownik(UzytkownikDAO $uzytkownik)
 	{
 		$db = new DB();
 		$sql  = "SELECT * ";
 		$sql .= "FROM " . DB_SCHEMA . ".artykul ";
 		$sql .= "WHERE iduzytkownik = :IDUZYTKOWNIK ";
-		$db->setParam("IDUZYTKOWNIK", $uzykownik->getIdUzytkownik());
+		$db->setParam("IDUZYTKOWNIK", $uzytkownik->getIdUzytkownik());
 		$db->query($sql);
 		return new Collection($db, \braga\wordgame\common\obj\Artykul::get());
 	}

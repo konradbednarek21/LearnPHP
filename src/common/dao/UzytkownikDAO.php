@@ -4,17 +4,17 @@ use braga\db\DAO;
 use braga\db\DataSource;
 use braga\db\mysql\DB;
 /**
- * Created on 11-06-2017 09:54:12
+ * Created on 17-09-2017 10:33:33
  * @author Konrad Bednarek
  * @package FizWeb
- * error prefix FW:102
+ * error prefix FW:104
  * Genreated by SimplePHPDAOClassGenerator ver 2.2.0
  * https://sourceforge.net/projects/simplephpdaogen/ 
  * Designed by schama CRUD http://wikipedia.org/wiki/CRUD
  * class generated automatically, please do not modify under pain of 
  * OVERWRITTEN WITHOUT WARNING 
  */
-class UzykownikDAO implements DAO
+class UzytkownikDAO implements DAO
 {
 	// -------------------------------------------------------------------------
 	protected static $instance = array();
@@ -36,14 +36,14 @@ class UzykownikDAO implements DAO
 		{
 			if(!$this->retrieve($idUzytkownik))
 			{
-				throw new \Exception("FW:10201 " . DB_SCHEMA . ".uzykownik(" . $idUzytkownik . ")  does not exists");
+				throw new \Exception("FW:10401 " . DB_SCHEMA . ".uzytkownik(" . $idUzytkownik . ")  does not exists");
 			}
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
 	 * @param int $idUzytkownik
-	 * @return \braga\wordgame\common\obj\Uzykownik
+	 * @return \braga\wordgame\common\obj\Uzytkownik
 	 */
 	static function get($idUzytkownik = null)
 	{
@@ -65,26 +65,26 @@ class UzykownikDAO implements DAO
 		}
 	}
 	// -------------------------------------------------------------------------
-	protected static function updateFactoryIndex(UzykownikDAO $uzykownik)
+	protected static function updateFactoryIndex(UzytkownikDAO $uzytkownik)
 	{
-		$key = array_search($uzykownik,self::$instance,true);
+		$key = array_search($uzytkownik,self::$instance,true);
 		if($key !== false)
 		{
-			if($key !== $uzykownik->getIdUzytkownik())
+			if($key !== $uzytkownik->getIdUzytkownik())
 			{
 				unset(self::$instance[$key]);
-				self::$instance[$uzykownik->getIdUzytkownik()] = $uzykownik;
+				self::$instance[$uzytkownik->getIdUzytkownik()] = $uzytkownik;
 			}
 		}
 		else
 		{
-			self::$instance[$uzykownik->getIdUzytkownik()] = $uzykownik;
+			self::$instance[$uzytkownik->getIdUzytkownik()] = $uzytkownik;
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
 	 * @param DataSource $db
-	 * @return \braga\wordgame\common\obj\Uzykownik
+	 * @return \braga\wordgame\common\obj\Uzytkownik
 	 */
 	static function getByDataSource(DataSource $db)
 	{
@@ -217,14 +217,23 @@ class UzykownikDAO implements DAO
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Method read object of class Uzykownik you can read all of atrib by get...() function
-	 * select record from table uzykownik
+	 * Methods returns colection of objects PrawaModul
+	 * @return Collection &lt;PrawaModul&gt; 
+	 */
+	public function getPrawaModulsForUzytkownik()
+	{
+		return \braga\wordgame\common\obj\PrawaModul::getAllByUzytkownik($this);
+	}
+	// -------------------------------------------------------------------------
+	/**
+	 * Method read object of class Uzytkownik you can read all of atrib by get...() function
+	 * select record from table uzytkownik
 	 * @return boolean
 	 */
 	protected function retrieve($idUzytkownik)
 	{
 		$db = new DB();
-		$sql  = "SELECT * FROM " . DB_SCHEMA . ".uzykownik ";
+		$sql  = "SELECT * FROM " . DB_SCHEMA . ".uzytkownik ";
 		$sql .= "WHERE iduzytkownik = :IDUZYTKOWNIK ";
 		$db->setParam("IDUZYTKOWNIK", $idUzytkownik);
 		$db->query($sql);
@@ -240,14 +249,14 @@ class UzykownikDAO implements DAO
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Methods add object of class Uzykownik
-	 * insert record into table uzykownik
+	 * Methods add object of class Uzytkownik
+	 * insert record into table uzytkownik
 	 * @return boolean
 	 */
 	protected function create()
 	{
 		$db = new DB();
-		$sql  = "INSERT INTO " . DB_SCHEMA . ".uzykownik(email, haslo, imie, nazwisko, status) ";
+		$sql  = "INSERT INTO " . DB_SCHEMA . ".uzytkownik(email, haslo, imie, nazwisko, status) ";
 		$sql .= "VALUES(:EMAIL, :HASLO, :IMIE, :NAZWISKO, :STATUS) ";
 		$db->setParam("EMAIL",$this->getEmail());
 		$db->setParam("HASLO",$this->getHaslo());
@@ -264,20 +273,20 @@ class UzykownikDAO implements DAO
 		}
 		else
 		{
-			AddAlert("FW:10202 Insert record into table uzykownik fail");
+			AddAlert("FW:10402 Insert record into table uzytkownik fail");
 			return false;
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Method change object of class Uzykownik
-	 * update record in table uzykownik
+	 * Method change object of class Uzytkownik
+	 * update record in table uzytkownik
 	 * @return boolean
 	 */
 	protected function update()
 	{
 		$db = new DB();
-		$sql  = "UPDATE " . DB_SCHEMA . ".uzykownik ";
+		$sql  = "UPDATE " . DB_SCHEMA . ".uzytkownik ";
 		$sql .= "SET email = :EMAIL ";
 		$sql .= " , haslo = :HASLO ";
 		$sql .= " , imie = :IMIE ";
@@ -297,20 +306,20 @@ class UzykownikDAO implements DAO
 		}
 		else
 		{
-			AddAlert("FW:10203 Update record in table uzykownik fail");
+			AddAlert("FW:10403 Update record in table uzytkownik fail");
 			return false;
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Method removes object of class Uzykownik
-	 * removed are record from table uzykownik
+	 * Method removes object of class Uzytkownik
+	 * removed are record from table uzytkownik
 	 * @return boolean
 	 */
 	protected function destroy()
 	{
 		$db = new DB();
-		$sql  = "DELETE FROM " . DB_SCHEMA . ".uzykownik ";
+		$sql  = "DELETE FROM " . DB_SCHEMA . ".uzytkownik ";
 		$sql .= "WHERE iduzytkownik = :IDUZYTKOWNIK ";
 		$db->setParam("IDUZYTKOWNIK", $this->getIdUzytkownik());
 		$db->query($sql);
@@ -320,13 +329,13 @@ class UzykownikDAO implements DAO
 		}
 		else
 		{
-			AddAlert("FW:10204 Delete record from table uzykownik fail");
+			AddAlert("FW:10404 Delete record from table uzytkownik fail");
 			return false;
 		}
 	}
 	// -------------------------------------------------------------------------
 	/**
-	 * Methods set all atributes in object of class Uzykownik from object class DB
+	 * Methods set all atributes in object of class Uzytkownik from object class DB
 	 * @return void
 	 */
 	protected function setAllFromDB(DataSource $db)

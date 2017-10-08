@@ -6,6 +6,8 @@ use braga\tools\html\Controler;
 use braga\tools\tools\PostChecker;
 use braga\wordgame\frontoffice\utils\Perms;
 use braga\wordgame\frontoffice\views\Layout;
+use braga\wordgame\frontoffice\utils\Tags;
+use braga\wordgame\frontoffice\utils\BootstrapTags;
 
 class WebControler extends Controler {
 	// -------------------------------------------------------------------------

@@ -4,19 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "830750cf685928b2e2efa7b7a792c07c",
-    "content-hash": "66ffe2cbab84b7ae13b7cdd454d86fd2",
+    "hash": "6b912dacc060e4df4871531d05e558c5",
+    "content-hash": "fa0f030dba9c707bf84606b50f6d574a",
     "packages": [
         {
+            "name": "apache/log4php",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git-wip-us.apache.org/repos/asf/logging-log4php.git",
+                "reference": "cac428b6f67d2035af39784da1d1a299ef42fcf2"
+            },
+            "require": {
+                "php": ">=5.2.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/main/php/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "A versatile logging framework for PHP",
+            "homepage": "http://logging.apache.org/log4php/",
+            "keywords": [
+                "log",
+                "logging",
+                "php"
+            ],
+            "time": "2012-10-26 09:13:25"
+        },
+        {
             "name": "braga/db",
-            "version": "dev-trunk",
+            "version": "2.0.4",
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/braga/code/db",
-                "reference": "/trunk/@205"
+                "reference": "/tags/2.0.4/@432"
             },
             "require": {
-                "braga/tools": "dev-trunk",
+                "braga/tools": "~2",
                 "php": ">=5.4.0"
             },
             "suggest": {
@@ -47,18 +77,19 @@
                 "oracle",
                 "pdo"
             ],
-            "time": "2016-12-18 08:00:19"
+            "time": "2017-08-12 13:20:44"
         },
         {
             "name": "braga/tools",
-            "version": "dev-trunk",
+            "version": "2.1.5",
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/braga/code/tools",
-                "reference": "/trunk/@302"
+                "reference": "/tags/2.1.5/@447"
             },
             "require": {
-                "php": ">=5.4"
+                "apache/log4php": "~2.3",
+                "php": ">=5.6"
             },
             "require-dev": {
                 "phpunit/phpunit": "3.7.38"
@@ -81,19 +112,19 @@
                 "libs",
                 "tools"
             ],
-            "time": "2017-04-29 15:03:40"
+            "time": "2017-10-06 18:51:01"
         },
         {
             "name": "braga/widgets",
-            "version": "dev-trunk",
+            "version": "2.2.10",
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/braga/code/widgets",
-                "reference": "/trunk/@299"
+                "reference": "/tags/2.2.10/@451"
             },
             "require": {
-                "braga/db": "dev-trunk",
-                "braga/tools": "dev-trunk",
+                "braga/db": "~2",
+                "braga/tools": "~2",
                 "php": ">=5.4"
             },
             "require-dev": {
@@ -123,20 +154,20 @@
             "keywords": [
                 "widgets jquery-ui"
             ],
-            "time": "2017-04-24 19:44:57"
+            "time": "2017-10-06 20:10:55"
         }
     ],
     "packages-dev": [
         {
             "name": "braga/dao-generator",
-            "version": "dev-trunk",
+            "version": "2.5.7",
             "source": {
                 "type": "svn",
                 "url": "https://svn.code.sf.net/p/simplephpdaogen/code",
-                "reference": "/trunk/@176"
+                "reference": "/tags/2.5.7/@197"
             },
             "require": {
-                "braga/db": "dev-trunk"
+                "braga/db": "~2"
             },
             "require-dev": {
                 "phpunit/phpunit": "3.7.38"
@@ -165,17 +196,12 @@
                 "generator",
                 "orm"
             ],
-            "time": "2017-06-07 18:55:26"
+            "time": "2017-09-30 18:30:48"
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "braga/db": 20,
-        "braga/tools": 20,
-        "braga/widgets": 20,
-        "braga/dao-generator": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
